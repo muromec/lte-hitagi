@@ -1,4 +1,6 @@
 unsigned short *usbint = (unsigned short*)0x24852004;
+unsigned short *e2cr = (unsigned short*) 0x2485200C;
+unsigned short *cpucr = (unsigned short*) 0x24852014;
 
 void usb_wait_ep1() {
   unsigned short *e1cr = (unsigned short*) 0x2485200A;
@@ -15,7 +17,6 @@ void usb_wait_ep1() {
 
 void usb_write_ep2(unsigned short* data, short len) {
 
-  unsigned short *e2cr = (unsigned short*) 0x2485200C;
 
   unsigned short *out = (unsigned short*)0x248520b0;
 
@@ -38,3 +39,6 @@ void usb_write_ep2(unsigned short* data, short len) {
 
 }
 
+void usb_init() {
+  *cpucr = 1;
+}
