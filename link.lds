@@ -1,7 +1,7 @@
 TARGET(elf32-bigarm)
 
 MEMORY {
-  SRAM (RWX) : ORIGIN = 0x12000000, LENGTH = 32m
+  IRAM (RWX) : ORIGIN = 0x3fd0000, LENGTH = 192k
 }
 
 ENTRY(start)
@@ -11,9 +11,9 @@ SECTIONS {
   .data : {
     *(.startup)
     *(.data)
-  } > SRAM
+  } > IRAM
 
   .bss : {
     *(.bss)
-  } > SRAM
+  } > IRAM
 }
