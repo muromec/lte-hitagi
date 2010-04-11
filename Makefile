@@ -1,7 +1,7 @@
 
 CFLAGS=-pie -mbig-endian -march=armv4 -mtune=arm7tdmi -O0
 
-SOURCES=start.c string.c memcpy.c parse.c handle.c usb.c dump.c
+SOURCES=start.c string.c memcpy.c parse.c handle.c usb.c dump.c nor.c
 OBJECTS=$(SOURCES:.c=.o)
 
 NAME=lte-hitagi

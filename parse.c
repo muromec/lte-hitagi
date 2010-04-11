@@ -85,12 +85,14 @@ void parse_cmd(unsigned char *in, short len) {
       parse_ramldr2_read(in, len);
       break;
 
+    case 'C': // RAMLDR2 report flash id
+      dump_id();
+      break;
     case 'F': // RAMLDR2 write
     case 'Z': // RAMLDR2 shutdown
     case 'A': // RAMLDR2 init
     case 'B': // RAMLDR2 set blank
     case 'S': // RAMLDR2 start phone
-    case 'C': // RAMLDR2 report flash id
       parse_ramldr2_cmd(in, len);
     break;
   }
