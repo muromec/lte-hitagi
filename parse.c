@@ -63,6 +63,15 @@ void parse_moto_cmd(unsigned char *in, short len) {
 
 }
 
+void parse_ramldr2_read(unsigned char *in, short len) {
+  unsigned int addr = 0, size=0;
+
+  memcpy(&addr, in, 4);
+  memcpy(&size, in+4, 4);
+
+  dump(addr, size);
+}
+
 void parse_cmd(unsigned char *in, short len) {
 
   switch(*in) {
@@ -71,10 +80,14 @@ void parse_cmd(unsigned char *in, short len) {
       parse_moto_cmd(in, len);
       break;
 
+    case 'R': // RAMLDR2 read block
+      in++;
+      parse_ramldr2_read(in, len);
+      break;
+
     case 'F': // RAMLDR2 write
     case 'Z': // RAMLDR2 shutdown
     case 'A': // RAMLDR2 init
-    case 'R': // RAMLDR2 read block
     case 'B': // RAMLDR2 set blank
     case 'S': // RAMLDR2 start phone
     case 'C': // RAMLDR2 report flash id
