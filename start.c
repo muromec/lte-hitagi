@@ -8,6 +8,7 @@ void start() {
   usb_init();
 
   while(1) {
+    alive();
     usb_wait_ep1();
   }
 
